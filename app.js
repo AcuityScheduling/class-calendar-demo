@@ -15,9 +15,7 @@ var app = express();
 var port = process.env.ACUITY_PORT || 3000;
 
 // Add some routes:
-app.get('/', function (req, res) {
-  res.send('Hello World');
-});
+app.use('/', express.static('public'));
 app.get('/api/classes', function (req, res) {
   acuity.request('/availability/classes?month=' + req.query.month, function (err, response) {
     if (err) {
